@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101510">
+  <meta name="description" content="Emberbound — descend into the ancient dark, gather what remains, and kindle a new home at Hearth.">
+  <title>Emberbound — Into the Deep</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+    :root { color-scheme: dark; --ink: #f4eedf; --muted: #a9a798; --ember: #f1a64a; --moss: #a5b18a; --panel: #171d18; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; color: var(--ink); background: #101510; font-family: 'DM Sans', sans-serif; }
+    .grain { position: fixed; inset: 0; pointer-events: none; opacity: .13; z-index: 3; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.23'/%3E%3C/svg%3E"); }
+    .shell { max-width: 1160px; margin: auto; padding: 0 44px; }
+    header { height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ffffff12; }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; }
+    .sigil { width: 30px; height: 30px; color: var(--ember); }
+    nav { display: flex; gap: 33px; align-items: center; color: #c2c0b4; font-size: 12px; letter-spacing: .07em; }
+    nav a { color: inherit; text-decoration: none; }
+    nav a:hover { color: var(--ember); }
+    .edition { color: var(--moss); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+    main { padding: 49px 0 68px; }
+    .eyebrow { color: var(--ember); font-size: 10px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+    .hero { display: grid; grid-template-columns: 1.02fr .98fr; gap: 40px; align-items: center; min-height: 442px; }
+    h1 { margin: 16px 0 14px; font: 800 clamp(54px, 7vw, 88px)/.93 'Playfair Display', Georgia, serif; letter-spacing: -.055em; }
+    h1 span { color: var(--ember); }
+    .lede { max-width: 445px; margin: 22px 0 0; color: #c2c0b4; font-size: 15px; line-height: 1.8; }
+    .actions { display: flex; gap: 12px; align-items: center; margin-top: 30px; }
+    .button { min-height: 43px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #f1a64a; color: #15140f; background: var(--ember); font-size: 11px; font-weight: 700; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; }
+    .button.secondary { color: var(--ink); background: transparent; border-color: #ffffff3a; }
+    .art { position: relative; min-height: 380px; overflow: hidden; border: 1px solid #d5b47c3b; background: radial-gradient(ellipse at 50% 91%, #a34a24 0, #713b25 15%, #332c24 37%, #1b211b 69%, #131914 100%); }
+    .art:before { content: ''; position: absolute; width: 73%; height: 69%; left: 13%; bottom: -7%; border-radius: 50% 50% 0 0; background: linear-gradient(90deg, #121813 0 14%, #273027 14% 20%, #111710 20% 39%, #2d3025 39% 45%, #111710 45% 68%, #2a3026 68% 74%, #121813 74%); clip-path: polygon(0 100%, 0 43%, 12% 30%, 17% 12%, 27% 32%, 35% 4%, 43% 33%, 51% 17%, 61% 36%, 70% 8%, 79% 31%, 91% 18%, 100% 38%, 100% 100%); }
+    .art:after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #10151008 50%, #101510cc 100%); }
+    .moon { position: absolute; right: 20%; top: 14%; width: 70px; height: 70px; border-radius: 50%; background: #efbd77; box-shadow: 0 0 56px #ed9b4b70, 0 0 120px #ee9b4b30; }
+    .path { position: absolute; left: 36%; bottom: -14%; width: 30%; height: 58%; background: linear-gradient(0deg,#cf7133aa,#d8914b22 70%,transparent); clip-path: polygon(44% 0, 57% 0, 100% 100%, 0 100%); }
+    .art-label { position: absolute; z-index: 1; bottom: 20px; left: 22px; color: #e9c79b; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .ornament { position: absolute; z-index: 1; top: 20px; left: 20px; color: #f5d097aa; font-size: 10px; letter-spacing: .2em; writing-mode: vertical-rl; }
+    .lower { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 22px; border-top: 1px solid #ffffff19; border-bottom: 1px solid #ffffff19; }
+    .feature { padding: 22px 24px 24px 0; }
+    .feature + .feature { padding-left: 24px; border-left: 1px solid #ffffff19; }
+    .feature b { display: block; margin-bottom: 8px; color: var(--moss); font: 600 18px 'Playfair Display', Georgia, serif; }
+    .feature p { margin: 0; color: #a9a798; font-size: 11px; line-height: 1.7; }
+    footer { display: flex; justify-content: space-between; padding: 22px 0; color: #77796d; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+    @media (max-width: 700px) {
+      .shell { padding: 0 21px; }
+      header { height: 68px; }
+      nav { gap: 15px; font-size: 10px; }
+      nav a:nth-child(2) { display: none; }
+      .edition { display: none; }
+      main { padding-top: 34px; }
+      .hero { grid-template-columns: 1fr; gap: 30px; min-height: 0; }
+      h1 { font-size: clamp(56px, 15vw, 76px); }
+      .lede { font-size: 14px; }
+      .art { min-height: 270px; }
+      .moon { width: 57px; height: 57px; }
+      .lower { grid-template-columns: 1fr; margin-top: 25px; }
+      .feature, .feature + .feature { padding: 16px 0; border-left: 0; }
+      .feature + .feature { border-top: 1px solid #ffffff19; }
+      footer { gap: 14px; font-size: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="shell">
+    <header>
+      <a class="brand" href="#home" aria-label="Emberbound home">
+        <svg class="sigil" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2.5c1.9 5.2 7.8 7.1 7.8 14.1 0 5-3.5 9.1-7.8 11.1-4.3-2-7.8-6.1-7.8-11.1C8.2 9.6 14.1 7.7 16 2.5Z" stroke="currentColor" stroke-width="1.3"/><path d="M16 12c.5 3.2 3.6 4.3 3.6 7.4a3.6 3.6 0 0 1-7.2 0c0-3.1 3.1-4.2 3.6-7.4Z" fill="currentColor"/></svg>
+        <span>Emberbound</span>
+      </a>
+      <nav aria-label="Main navigation"><a href="#descent">The Descent</a><a href="#hearth">Hearth</a><span class="edition">A roguelike reborn</span></nav>
+    </header>
+    <main id="home">
+      <section class="hero" aria-labelledby="title">
+        <div data-capture-ready="true">
+          <div class="eyebrow">A small light in a vast dark</div>
+          <h1 id="title">Into the<br><span>deep.</span></h1>
+          <p class="lede">Beneath a forgotten world, every descent is a story. Gather what the dark leaves behind. Carry its embers home.</p>
+          <div class="actions"><a class="button" href="#descent">Begin your descent <span aria-hidden="true">&nbsp;→</span></a><a class="button secondary" href="#hearth">Discover Hearth</a></div>
+        </div>
+        <div class="art" role="img" aria-label="An ember-lit path winding through a shadowed forest beneath a golden moon"><div class="moon"></div><div class="path"></div><span class="ornament">✳ &nbsp; THE OLD WOOD</span><span class="art-label">Beyond the last warm light</span></div>
+      </section>
+      <section class="lower" id="descent" aria-label="The journey">
+        <article class="feature"><b>Every run, a tale</b><p>Procedural depths, hard choices, and the promise of one more step into the unknown.</p></article>
+        <article class="feature" id="hearth"><b>Bring the embers home</b><p>What you find below can kindle a place worth returning to. The first spark is yours to protect.</p></article>
+        <article class="feature"><b>Light against the dark</b><p>A familiar roguelike heart, reimagined around the quiet courage of making a home.</p></article>
+      </section>
+    </main>
+    <footer><span>Emberbound · An independent adventure</span><span>Descend. Gather. Return.</span></footer>
+  </div>
+</body>
+</html>
