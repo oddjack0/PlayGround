@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.watabou'
+    compileSdkVersion appAndroidCompileSDK
+
+    defaultConfig {
+        //noinspection MinSdkTooLow
+        minSdkVersion appAndroidMinSDK
+    }
+}
+
+
